@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApp18.Views.Finish"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp18.Views"
+        mc:Ignorable="d"
+        Title="Finish" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions></Grid.RowDefinitions>
+        <DockPanel>
+            <ItemsControl>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="sdasd" Height="20" Width="200"></TextBlock>
+                            <TextBlock Text="sdasdsd" Grid.Column="1"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </Grid>
+</Window>

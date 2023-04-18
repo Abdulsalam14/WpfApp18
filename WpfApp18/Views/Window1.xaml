@@ -1,0 +1,66 @@
+﻿<Window x:Class="WpfApp18.Views.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp18.Views"
+        mc:Ignorable="d"
+        Title="Window1" Height="800" Width="1400" WindowStartupLocation="CenterScreen">
+    <Grid Background="#2f2e2c">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding CurrentTime, Mode=TwoWay}" FontSize="28" Grid.Row="1" Foreground="Beige" HorizontalAlignment="Right"></TextBlock>
+            <Grid Grid.Column="1" Grid.Row="0" DataContext="{Binding tables}" Background="#2f2e2c" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Style="{DynamicResource tablebtn}" Content="Masa 1" DataContext="{Binding Table1}"></Button>
+                <Button Style="{DynamicResource tablebtn}" Grid.Column="1" DataContext="{Binding Table2}" Content="Masa 2" ></Button>
+                <Button Style="{DynamicResource tablebtn}" Grid.Column="2" Content="Masa 3" DataContext="{Binding Table3}" ></Button>
+                <Button Style="{DynamicResource tablebtn}" Grid.Row="1" Content="Masa 4" DataContext="{Binding Table4}" ></Button>
+                <Button Style="{DynamicResource tablebtn}" Grid.Row="1" Content="Masa 5" DataContext="{Binding Table5}" Grid.Column="1"></Button>
+                <Button Style="{DynamicResource tablebtn}" Grid.Row="1" Grid.Column="2" DataContext="{Binding Table6}" Content="Masa 6"></Button>
+            </Grid>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding table.Name}" FontSize="32" Foreground="Beige" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <Grid Grid.Row="1">
+                <Frame x:Name="framee"  NavigationUIVisibility="Hidden">
+                    <Frame.Style>
+                        <Style TargetType="Frame">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding table}" Value="Null">
+                                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding table.Isfull}" Value="False">
+                                    <Setter Property="Content" Value="{Binding DataContext.page1, RelativeSource={RelativeSource AncestorType=Window}}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding table.Isfull}" Value="True">
+                                    <Setter Property="Content" Value="{Binding DataContext.page2,RelativeSource={RelativeSource AncestorType=Window}}"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Frame.Style>
+                </Frame>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
